@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-
+import {Link} from 'react-router-dom';
 
 export default function Home() {
     const [name, setName] = useState('');
@@ -17,14 +17,18 @@ export default function Home() {
                             type = 'text'
                             name = 'username'
                             placeholder='Enter name'
+                            onChange={(event) => setName(event.target.value)}
                         />
                         <input 
                             type = 'text'
                             name = 'room'
                             placeholder='Enter room...'
+                            onChange={(event) => setRoom(event.target.value)}
                         />
                     </form>
-                    <button>Join Chat</button>
+                    <Link onClick={(event) => (!name || !room) ? event.preventDefault() : null} to={`/chat?name=${name}&room=${room}`}>
+                        <button>Join Chat</button>
+                    </Link>
                 </div>
             </div>
         </div>

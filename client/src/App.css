@@ -16,6 +16,10 @@
     border-bottom: 2px solid #ddd;
 }
 
+.chat__body{
+    margin-bottom: 15px;
+}
+
 .chat__body form{
     display: flex;
     flex-direction: column;
@@ -25,16 +29,23 @@
     margin: 15px;
     width: 250px;
     outline: none;
-    padding: 5px 5px;
+    padding: 8px 5px;
     border: 1px solid #111;
+    border-radius: 3px;
 }
 
 .chat__body button{
-    width: 250px;
+    width: 100px;
+    background-color: white;
+    border: 1px solid #ddd;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 4px;
+    margin-left: 15px;
     text-align: center;
-    flex-direction: column;
+    padding: 8px;
+    font-family: 'Times New Roman', Times, serif;
+}
+.chat__body button:hover{
+    background-color: darkslateblue;
+    color: white;
 }
