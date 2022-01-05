@@ -27,7 +27,7 @@ export default function Home() {
                         />
                     </form>
                     <Link onClick={(event) => (!name || !room) ? event.preventDefault() : null} to={`/chat?name=${name}&room=${room}`}>
-                        <button>Join Chat</button>
+                        <button type="submit">Join Chat</button>
                     </Link>
                 </div>
             </div>
