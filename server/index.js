@@ -5,6 +5,7 @@ const http = require('http');
 const PORT = 5000;
 
 const router = require('./router');
+const { callbackify } = require('util');
 
 const app = express();
 const server = http.createServer(app);
@@ -12,6 +13,11 @@ const io = socketio(server);
 
 io.on('connection', (socket) => {
     console.log('we have a connection');
+
+    socket.on('join', ({name, room})=> {
+        console.log(name, room)
+
+    });
 
     socket.on('disconnect', () => {
         console.log('user has left');
