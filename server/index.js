@@ -25,7 +25,7 @@ io.on('connection', (socket) => {
         socket.broadcast.to(user.room).emit('message', {user: 'admin', text: `${user.name}, has joined!`});
 
         socket.join(user.room);
-        callback();
+    
     });
 
     socket.on('sendMessage', (message, callback) => {
