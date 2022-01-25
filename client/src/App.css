@@ -1,3 +1,7 @@
+body{
+    background-color: #1d1d1d;
+}
+
 .chat{
     display: flex;
     justify-content: center;
@@ -48,4 +52,66 @@
 .chat__body button:hover{
     background-color: darkslateblue;
     color: white;
+}
+
+/* input bar */
+
+.infoBar{
+    display: flex;
+    background-color: #2979FF;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 4px 4px 0 0;
+    height: 60px;
+    width: 30%;
+    margin-left: 450px;
+    margin-top: 100px;
+}
+.leftContainer{
+    flex: 0.5;
+    display: flex;
+    align-items: center;
+    margin-left: 5%;
+    color: white;
+}
+.rightContainer{
+    display: flex;
+    flex: 0.5;
+    justify-content: flex-end;
+    margin-right: 5%;
+}
+.rightContainer img{
+    width: 20px;
+}
+.leftContainer h3{
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 200;
+    font-size: 1rem;
+}
+
+.form{
+    display: flex;
+    border-top: 2px solid #D3D3D3;
+}
+
+.input{
+    border: none;
+    border-radius: 0;
+    padding: 5%;
+    width: 80%;
+    font-size: 1.2em;
+}
+input:focus, textarea:focus, select:focus{
+    outline: none;
+}
+.sendButton{
+    color: #fff !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #2979FF;
+    padding: 20px;
+    display: inline-block;
+    border: none;
+    width: 20%;
 }

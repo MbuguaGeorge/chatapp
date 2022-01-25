@@ -4,6 +4,7 @@ import React, {useState, useEffect} from 'react';
 import queryString from 'query-string';
 import io from 'socket.io-client';
 import InfoBar from './infoBar';
+import Input from './input';
 
 let socket;
 
@@ -53,7 +54,8 @@ export default function Chat() {
 
     return (
         <div>
-            <InfoBar />
+            <InfoBar room={room}/>
+            <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
         </div>
     )
 }
