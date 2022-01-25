@@ -20,7 +20,7 @@ io.on('connection', (socket) => {
         const {error, user} = addUser({id: socket.id, name, room});
         //if (error) return callback(error);
 
-        socket.emit('message', {user: 'admin', text: `${name}, welcome to the room ${room}`});
+        socket.emit('message', {user: 'admin', text: ` Hello ${name}, welcome to Sebble. You are in the ${room} room`});
         socket.broadcast.to(room).emit('message', {user: 'admin', text: `${name}, has joined!`});
 
         socket.join(room);
@@ -30,7 +30,7 @@ io.on('connection', (socket) => {
     socket.on('sendMessage', (message, callback) => {
         let user = getUser(socket.id);
         console.log(user)
-        io.to(user.room).emit('message', {user: user.name, text: message});
+        io.to(room).emit('message', {user: name, text: message});
         
         callback();
     });

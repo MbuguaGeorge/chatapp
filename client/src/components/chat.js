@@ -5,6 +5,7 @@ import queryString from 'query-string';
 import io from 'socket.io-client';
 import InfoBar from './infoBar';
 import Input from './input';
+import Messages from './messages'
 
 let socket;
 
@@ -55,6 +56,7 @@ export default function Chat() {
     return (
         <div>
             <InfoBar room={room}/>
+            <Messages messages={messages} name={name} />
             <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
         </div>
     )
