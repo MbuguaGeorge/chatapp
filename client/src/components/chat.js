@@ -3,6 +3,7 @@
 import React, {useState, useEffect} from 'react';
 import queryString from 'query-string';
 import io from 'socket.io-client';
+import InfoBar from './infoBar';
 
 let socket;
 
@@ -25,7 +26,7 @@ export default function Chat() {
         socket.emit('join', {name, room});
 
         return()=>{
-            socket.emit('disconnect');
+            socket.disconnect();
             socket.off()
         }
         
@@ -37,9 +38,22 @@ export default function Chat() {
         })
     }, [messages]);
 
+    const sendMessage = (event) => {
+        event.preventDefault()
+
+        if (message){
+            socket.emit('sendMessage', message, () => {
+                setMessage('');
+            })
+        }
+
+    };
+
+    console.log(message, messages);
+
     return (
         <div>
-            hey
+            <InfoBar />
         </div>
     )
 }
