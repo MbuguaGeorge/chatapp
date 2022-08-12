@@ -1,9 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import queryString from 'query-string';
-import io, { Socket } from 'socket.io-client';
+import io from 'socket.io-client';
 import InfoBar from './infoBar';
-import Input from './input';
-import Messages from './messages'
 
 let socket;
 
@@ -60,15 +58,27 @@ export default function Chat() {
     useEffect(() => {
         socket.on('received_message', (data) => {
             console.log(data)
-            //setMessages([...messages, message]);
+            setMessages((msgs) => [...msgs, data]);
         }) 
-    }, []);
+    }, [messages]);
 
     return (
         <div>
             <InfoBar room={room}/>
-            <Messages messages={messages} name={name} />
-            <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
+
+            <div className='footer'>
+                <form className='form'>
+                    <input 
+                        className = 'input'
+                        type = 'text'
+                        placeholder='Type a message...'
+                        value = {message}
+                        onChange = {(event) => setMessage(event.target.value)}
+                        onKeyPress = {event => event.key === 'Enter' ? sendMessage(event) : null}
+                    />
+                    <button className='sendButton' onClick={(event) => sendMessage(event)}>Send</button>
+                </form>
+            </div>
         </div>
     )
 }
