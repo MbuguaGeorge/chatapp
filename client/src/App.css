@@ -63,8 +63,6 @@ body{
     justify-content: space-between;
     border-radius: 4px 4px 0 0;
     height: 60px;
-    width: 30%;
-    margin-left: 450px;
     margin-top: 100px;
 }
 .leftContainer{
@@ -93,8 +91,6 @@ body{
 .form{
     display: flex;
     border-top: 2px solid #D3D3D3;
-    margin-left: 450px;
-    width: 30%;
 }
 
 .input{
@@ -118,54 +114,44 @@ input:focus, textarea:focus, select:focus{
     display: inline-block;
     border: none;
 }
-
-.messageBox{
-    background: #F3F3F3;
-    border-radius: 20px;
-    padding: 5px 20px;
-    padding: 5px 20px;
-    color: white;
-    display: inline-block;
-    max-width: 80%;
+.chat-window{
+    height: 400px;
+    width: 300px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
 }
-.messageText{
+.chat-body{
+    height: calc(450px - (45px + 70px));
+    border: 1px solid #263238;
+    background: #fff;
+    position: relative;
+}
+.msg{
+    height: auto;
+    padding: 10px;
+    display: flex;
+}
+.msg-cont{
+    width: auto;
+    height: auto;
+    min-height: 40px;
+    max-width: 120px;
+    background-color: #43a047;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+    margin-left: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+.msg-container{
     width: 100%;
-    letter-spacing: 0;
-    float: left;
-    font-size: 1.1rem;
-    word-wrap: break-word;
-}
-.messageText img{
-    vertical-align: middle;
-}
-.messageContainer{
-    display: flex;
-    justify-content: flex-end;
-    padding: 0 5%;
-    margin-top: 3px;
-}
-.sentText{
-    display: flex;
-
-}
-.pr-10{
-    padding-right: 10px;
-}
-.justifyStart{
-    justify-content: flex-start;
-}
-.justifyEnd{
-    justify-content: flex-end;
-}
-.colorWhite{
-    color: white;
-}
-.colorDark{
-    color: #353535;
-}
-.backgroundBlue{
-    background: #2979FF;
-}
-.backgroundLight{
-    background: #F3F3F3;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }

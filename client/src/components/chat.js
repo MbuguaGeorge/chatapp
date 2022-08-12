@@ -8,7 +8,7 @@ let socket;
 export default function Chat() {
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
-    const [message, setMessage] = useState('');
+    const [curMessage, setCurMessage] = useState('');
     const [messages, setMessages] = useState([]);
 
     const ENDPOINT = 'http://localhost:5000';
@@ -30,21 +30,15 @@ export default function Chat() {
         
     },[ENDPOINT]);
 
-    useEffect(() => {
-        socket.on('message', (message) => {
-            setMessages([...messages, message]);
-        })
-    }, [messages]);
-
     const sendMessage = async (event) => {
         event.preventDefault()
 
-        if (message !== ''){
+        if (curMessage !== ''){
 
             const messageData = {
                 room: room,
                 author: name,
-                message: message,
+                message: curMessage,
                 time: new Date(Date.now()).getHours() +
                 ":" +
                 new Date(Date.now()).getMinutes(),
@@ -63,17 +57,33 @@ export default function Chat() {
     }, [messages]);
 
     return (
-        <div>
+        <div className='chat-window'>
             <InfoBar room={room}/>
-
+            <div className='chat-body'>
+                {messages.map((content, i) => {
+                    return (
+                            <div className='msg' key={i}>
+                                <div>
+                                    <div className='msg-cont'>
+                                        <p>{content.message}</p>
+                                    </div>
+                                    <div className='msg--cont'>
+                                        <p>{content.time}</p>
+                                        <p>{content.author}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                })}
+            </div>
             <div className='footer'>
                 <form className='form'>
                     <input 
                         className = 'input'
                         type = 'text'
                         placeholder='Type a message...'
-                        value = {message}
-                        onChange = {(event) => setMessage(event.target.value)}
+                        value = {curMessage}
+                        onChange = {(event) => setCurMessage(event.target.value)}
                         onKeyPress = {event => event.key === 'Enter' ? sendMessage(event) : null}
                     />
                     <button className='sendButton' onClick={(event) => sendMessage(event)}>Send</button>
