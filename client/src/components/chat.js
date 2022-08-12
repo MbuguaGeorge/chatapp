@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import queryString from 'query-string';
 import io from 'socket.io-client';
 import InfoBar from './infoBar';
+import ScrollToBottom from 'react-scroll-to-bottom';
 
 let socket;
 
@@ -45,13 +46,14 @@ export default function Chat() {
             };
 
             await socket.emit('send-message', messageData);
+            setMessages((msgs) => [...msgs, messageData]);
+            setCurMessage("")
         }
 
     };
 
     useEffect(() => {
         socket.on('received_message', (data) => {
-            console.log(data)
             setMessages((msgs) => [...msgs, data]);
         }) 
     }, [messages]);
@@ -60,9 +62,10 @@ export default function Chat() {
         <div className='chat-window'>
             <InfoBar room={room}/>
             <div className='chat-body'>
+                <ScrollToBottom className='msg-container'>
                 {messages.map((content, i) => {
                     return (
-                            <div className='msg' key={i}>
+                            <div className='msg' key={i} id={name === content.author ? "other" : "me"}>
                                 <div>
                                     <div className='msg-cont'>
                                         <p>{content.message}</p>
@@ -75,6 +78,7 @@ export default function Chat() {
                             </div>
                         )
                 })}
+                </ScrollToBottom>
             </div>
             <div className='footer'>
                 <form className='form'>

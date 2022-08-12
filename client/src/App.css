@@ -155,3 +155,32 @@ input:focus, textarea:focus, select:focus{
     overflow-y: scroll;
     overflow-x: hidden;
 }
+#me {
+    justify-content: flex-start;
+}
+  
+#me .msg-cont {
+    justify-content: flex-start;
+}
+  
+#me .msg--cont {
+    justify-content: flex-start;
+    margin-left: 5px;
+}
+  
+#other {
+    justify-content: flex-end;
+}
+  
+#other .msg-cont {
+    justify-content: flex-end;
+    background-color: cornflowerblue;
+}
+  
+#other .msg--cont {
+    justify-content: flex-end;
+    margin-right: 5px;
+}
+.msg-container::-webkit-scrollbar{
+    display: none;
+}
