@@ -1,8 +1,6 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-restricted-globals */
 import React, {useState, useEffect} from 'react';
 import queryString from 'query-string';
-import io from 'socket.io-client';
+import io, { Socket } from 'socket.io-client';
 import InfoBar from './infoBar';
 import Input from './input';
 import Messages from './messages'
@@ -15,24 +13,24 @@ export default function Chat() {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
 
-    const ENDPOINT = 'localhost:5000';
+    const ENDPOINT = 'http://localhost:5000';
 
     useEffect(() => {
-        const {name, room} = queryString.parse(location.search);
+        const {name, room} = queryString.parse(window.location.search);
 
-        socket = io(ENDPOINT, {transports: ['websocket']});
+        socket = io.connect(ENDPOINT, {transports: ['websocket']});
 
         setName(name);
         setRoom(room);
        
         socket.emit('join', {name, room});
 
-        return()=>{
+        return() => {
             socket.disconnect();
             socket.off()
         }
         
-    },[ENDPOINT, location.search]);
+    },[ENDPOINT]);
 
     useEffect(() => {
         socket.on('message', (message) => {
@@ -40,18 +38,31 @@ export default function Chat() {
         })
     }, [messages]);
 
-    const sendMessage = (event) => {
+    const sendMessage = async (event) => {
         event.preventDefault()
 
-        if (message){
-            socket.emit('sendMessage', message, () => {
-                setMessage('');
-            })
+        if (message !== ''){
+
+            const messageData = {
+                room: room,
+                author: name,
+                message: message,
+                time: new Date(Date.now()).getHours() +
+                ":" +
+                new Date(Date.now()).getMinutes(),
+            };
+
+            await socket.emit('send-message', messageData);
         }
 
     };
 
-    console.log(message, messages);
+    useEffect(() => {
+        socket.on('received_message', (data) => {
+            console.log(data)
+            //setMessages([...messages, message]);
+        }) 
+    }, []);
 
     return (
         <div>

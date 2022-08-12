@@ -1,6 +1,8 @@
 const express = require('express');
 const socketio = require('socket.io');
 const http = require('http');
+const cors = require('cors')
+const {Server} = require('socket.io')
 
 const {addUser, removeUser, getUser, getUserInRoom} = require('./users');
 
@@ -11,7 +13,12 @@ const { callbackify } = require('util');
 
 const app = express();
 const server = http.createServer(app);
-const io = socketio(server);
+const io = new Server(server, {
+    cors: {
+        origin: "http:localhost:3000",
+        methods: ["GET", "POST"],
+    },
+});
 
 io.on('connection', (socket) => {
     console.log('we have a connection');
@@ -27,12 +34,9 @@ io.on('connection', (socket) => {
         if (callback) callback();
     });
 
-    socket.on('sendMessage', (message, callback) => {
-        let user = getUser(socket.id);
-        console.log(user)
-        io.to(room).emit('message', {user: name, text: message});
-        
-        callback();
+    socket.on('send-message', (data) => {
+        console.log(data)
+        socket.to(data.room).emit('received_message', {user: data.author, text: data});
     });
 
     socket.on('disconnect', () => {
@@ -40,6 +44,6 @@ io.on('connection', (socket) => {
     });
 });
 
-app.use(router);
+app.use(cors);
 
 server.listen(PORT, () => console.log(`server is running on port ${PORT}`));
