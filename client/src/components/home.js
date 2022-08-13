@@ -9,7 +9,7 @@ export default function Home() {
         <div className='chat'>
             <div className='chat__border'>
                 <div className='chat__header'>
-                    <h3>ChatCord</h3>
+                    <h3>Chatty</h3>
                 </div>
                 <div className='chat__body'>
                     <form>
@@ -18,12 +18,14 @@ export default function Home() {
                             name = 'username'
                             placeholder='Enter name'
                             onChange={(event) => setName(event.target.value)}
+                            required
                         />
                         <input 
                             type = 'text'
                             name = 'room'
                             placeholder='Enter room...'
                             onChange={(event) => setRoom(event.target.value)}
+                            required
                         />
                     </form>
                     <Link onClick={(event) => (!name || !room) ? event.preventDefault() : null} to={`/chat?name=${name}&room=${room}`}>

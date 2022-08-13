@@ -41,4 +41,4 @@ io.on('connection', (socket) => {
 
 app.use(cors);
 
-server.listen(PORT, () => console.log(`server is running on port ${PORT}`));
+server.listen(process.env.PORT || PORT, () => console.log(`server is running on port ${PORT}`));

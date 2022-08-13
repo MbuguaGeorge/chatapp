@@ -11,6 +11,7 @@ export default function Chat() {
     const [room, setRoom] = useState('');
     const [curMessage, setCurMessage] = useState('');
     const [messages, setMessages] = useState([]);
+    //const [con, setCon] = useState(null)
 
     const ENDPOINT = 'http://localhost:5000';
 
@@ -54,9 +55,10 @@ export default function Chat() {
 
     useEffect(() => {
         socket.on('received_message', (data) => {
+            console.log(data)
             setMessages((msgs) => [...msgs, data]);
         }) 
-    }, [messages]);
+    },[ENDPOINT]);
 
     return (
         <div className='chat-window'>
@@ -71,8 +73,8 @@ export default function Chat() {
                                         <p>{content.message}</p>
                                     </div>
                                     <div className='msg--cont'>
-                                        <p>{content.time}</p>
-                                        <p>{content.author}</p>
+                                        <p className='auth'>{content.author}</p>
+                                        <p className='time'>{content.time}</p>
                                     </div>
                                 </div>
                             </div>
