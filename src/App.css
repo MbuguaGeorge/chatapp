@@ -1,7 +1,10 @@
 body{
     background-color: #1d1d1d;
 }
-
+.row>*{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
 .chat{
     display: flex;
     justify-content: center;
@@ -194,4 +197,154 @@ input:focus, textarea:focus, select:focus{
 }
 .msg-container::-webkit-scrollbar{
     display: none;
+}
+
+/* new */
+
+.container{
+    margin: 60px auto;
+    background: #fff;
+    padding: 0;
+    border-radius: 7px;
+}
+
+.col-md-4{
+    border-right: 1px solid #ddd;
+}
+
+.profile-image{
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+}
+
+.settings-tray{
+    padding: 10px 15px;
+    border-radius: 7px;
+    background: #eee;
+    display: flex;
+    justify-content: space-between;
+}
+
+.settings-tray i{
+    margin-top: 10px;
+    font-size: 25px;
+    color: grey;
+    transition: .3s;
+}
+
+.settings-tray i:hover{
+    color: #74b9ff;
+    cursor: pointer;
+}
+
+.search-box{
+    background: #fafafa;
+    padding: 10px 13px;
+}
+
+.input-wrapper{
+    background: #fff;
+    border-radius: 40px;
+}
+
+.input-wrapper i{
+    color: grey;
+    vertical-align: middle;
+    margin-left: 7px;
+}
+
+.input-wrapper input{
+    border: none;
+    border-radius: 40px;
+    width: 80%;
+    outline: none;
+}
+
+.input-wrapper input::placeholder{
+    color: #e3e3e3;
+    font-weight: 300;
+}
+
+.friend-drawer{
+    padding: 10px 15px;
+    display: flex;
+    vertical-align: baseline;
+    background: #fff;
+    transition: .3s ease;
+}
+
+.text{
+    margin-left: 12px;
+    width: 70%;
+}
+
+.text h6{
+    margin-top: 6px;
+    margin-bottom: 0;
+}
+
+.text p{
+    margin: 0;
+}
+
+.time{
+    color: grey;
+}
+
+.time:hover{
+    color: #fff;
+}
+
+.friend-drawer--onhover:hover{
+    background: #74b9ff;
+    cursor: pointer;
+    color: #fff;
+}
+
+hr{
+    width: 60%;
+}
+
+.friend-drawer--grey{
+    background-color: #eee;
+}
+
+.chat-bubble{
+    padding: 10px 14px;
+    background: #eee;
+    margin: 10px 35px;
+    border-radius: 9px;
+    position: relative;
+    animation: fadeIn 1s ease-in;
+}
+
+.chat-bubble::after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border: 20px solid transparent;
+    border-bottom: 0;
+    margin-top: -10px;
+}
+
+.chat-bubble--left::after{
+    left: 0;
+    border-right-color: #eee;
+    border-left: 0;
+    margin-left: -20px;
+}
+
+.chat-bubble--right::after{
+    right: 0;
+    border-left-color: #74b9ff;
+    border-right: 0;
+    margin-right: -20px;
+}
+
+.chat-bubble--blue{
+    color: #fff;
+    background: #74b9ff;
 }
