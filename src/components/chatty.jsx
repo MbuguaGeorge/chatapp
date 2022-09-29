@@ -7,6 +7,8 @@ import dev3 from './img/dev3.jpg';
 import AddIcon from '@mui/icons-material/Add';
 import Search from '@mui/icons-material/Search';
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
+import MicIcon from '@mui/icons-material/Mic';
+import SendIcon from '@mui/icons-material/Send';
 
 export default function Chatty() {
     return (
@@ -89,6 +91,9 @@ export default function Chatty() {
                             <div className="col-12">
                                 <div className="chat-box-tray">
                                     <i className="material-icons"><SentimentSatisfiedAltIcon /></i>
+                                    <input type="text" className="text" placeholder='Type your message here...'/>
+                                    <i className="material-icons"><MicIcon /></i>
+                                    <i className="material-icons" style={{marginLeft: '10px'}}><SendIcon /></i>
                                 </div>
                             </div>
                         </div>
