@@ -13,7 +13,41 @@ export default function Signup() {
                 <h5>Already A Member? Login</h5>
             </div>
             <form>
-                
+                <div className='input-field'>
+                    <input 
+                        type='text'
+                        required
+                    />
+                    <span></span>
+                    <label>Username</label>              
+                </div>
+
+                <div className='input-field'>
+                    <input 
+                        type='text'
+                        required
+                    />
+                    <span></span>
+                    <label>Email</label>              
+                </div>
+
+                <div className='input-field'>
+                    <input 
+                        type='text'
+                        required
+                    />
+                    <span></span>
+                    <label>Password</label>              
+                </div>
+
+                <div className='empty'>
+                    <div>
+                        <input 
+                        type='submit'
+                        value='Create account'
+                        />
+                    </div>
+                </div>
             </form>
         </div>
     )
