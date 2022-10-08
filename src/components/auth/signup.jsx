@@ -7,13 +7,14 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 export default function Signup() {
     return (
         <div className='container1'>
+        <div className='container2'>
             <div className='nav'>
                 <h1>Chatty.</h1>
             </div>
             <div className="hero">
                 <h5>START FOR FREE</h5>
                 <h1>Create new account<span>.</span></h1>
-                <h5>Already A Member? Login</h5>
+                <h5>Already A Member? <span>Log in</span></h5>
             </div>
             <form>
                 <div className='input-field'>
@@ -31,7 +32,7 @@ export default function Signup() {
                         required
                     />
                     <label>Email</label>              
-                    <span><EmailIcon size='small' /></span>
+                    <span><EmailIcon /></span>
                 </div>
 
                 <div className='input-field'>
@@ -52,6 +53,7 @@ export default function Signup() {
                     </div>
                 </div>
             </form>
+            </div>
         </div>
     )
 }
