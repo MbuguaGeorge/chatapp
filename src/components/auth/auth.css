@@ -32,10 +32,12 @@
 .input-field{
     position: relative;
     border: 1px solid #adadad;
-    margin: 5px 0;
+    margin: 7px 0;
     width: 300px;
     border-radius: 30px;
     padding-left: 10px;
+    display: flex;
+    align-items: center;
 }
 
 .input-field input{
@@ -61,6 +63,11 @@
     pointer-events: none;
     transition: .5s;
     font-size: .7rem;
+}
+
+.input-field span{
+    color: #adadad;
+    padding-right: 15px;
 }
 
 .empty{

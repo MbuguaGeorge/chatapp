@@ -1,5 +1,8 @@
 import React from 'react';
 import './auth.css';
+import EmailIcon from '@mui/icons-material/Email';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 export default function Signup() {
     return (
@@ -18,8 +21,8 @@ export default function Signup() {
                         type='text'
                         required
                     />
-                    <span></span>
                     <label>Username</label>              
+                    <span><AccountBoxIcon /></span>
                 </div>
 
                 <div className='input-field'>
@@ -27,8 +30,8 @@ export default function Signup() {
                         type='text'
                         required
                     />
-                    <span></span>
                     <label>Email</label>              
+                    <span><EmailIcon size='small' /></span>
                 </div>
 
                 <div className='input-field'>
@@ -36,8 +39,8 @@ export default function Signup() {
                         type='text'
                         required
                     />
-                    <span></span>
-                    <label>Password</label>              
+                    <label>Password</label>
+                    <span><VisibilityIcon /></span>
                 </div>
 
                 <div className='empty'>
