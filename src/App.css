@@ -376,3 +376,60 @@ hr{
     font: 30px;
     vertical-align: middle;
 }
+
+/* Home */
+
+.home{
+    margin: 60px 150px;
+}
+
+.home .nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home .nav button{
+    border: 1px solid #fff;
+    background-color: transparent;
+    color: #ddd;
+    padding: 8px 14px;
+    font-weight: 700;
+    border-radius: 20px;
+}
+
+.home .nav button:hover{
+    background-color: #ddd;
+    color: #263238;
+    transition: all .3;
+}
+
+.home-hero{
+    position: absolute;
+    left: 50%;
+    top: 80%;
+    transform: translate(-50%, -40%);
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.home-hero h2{
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 4rem;
+}
+
+.home-hero p{
+    color: #D3D3D3;
+    text-align: center;
+    padding-top: 20px;
+    padding-right: 200px;
+    padding-left: 200px;
+}
+
+.home-hero img{
+    width: 900px;
+    margin-top: 50px;
+}

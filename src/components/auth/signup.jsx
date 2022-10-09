@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './auth.css';
 import EmailIcon from '@mui/icons-material/Email';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
@@ -9,7 +10,7 @@ export default function Signup() {
         <div className='container1'>
         <div className='container2'>
             <div className='nav'>
-                <h1>Chatty.</h1>
+                <Link to='/' style={{textDecoration: 'none'}}><h1>Chatty.</h1></Link>
             </div>
             <div className="hero">
                 <h5>START FOR FREE</h5>

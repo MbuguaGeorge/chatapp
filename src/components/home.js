@@ -1,37 +1,21 @@
-import React, {useState} from 'react';
+import React, {} from 'react';
 import {Link} from 'react-router-dom';
+import chatty from './img/chatty.png';
 
 export default function Home() {
-    const [name, setName] = useState('');
-    const [room, setRoom] = useState('');
-
     return (
-        <div className='chat'>
-            <div className='chat__border'>
-                <div className='chat__header'>
-                    <h3>Chatty</h3>
-                </div>
-                <div className='chat__body'>
-                    <form>
-                        <input 
-                            type = 'text'
-                            name = 'username'
-                            placeholder='Enter name'
-                            onChange={(event) => setName(event.target.value)}
-                            required
-                        />
-                        <input 
-                            type = 'text'
-                            name = 'room'
-                            placeholder='Enter room...'
-                            onChange={(event) => setRoom(event.target.value)}
-                            required
-                        />
-                    </form>
-                    <Link onClick={(event) => (!name || !room) ? event.preventDefault() : null} to={`/chat?name=${name}&room=${room}`}>
-                        <button type="submit">Join Chat</button>
-                    </Link>
-                </div>
+        <div className='home'>
+            <div className="nav">
+                <h1>Chatty.</h1>
+                <Link to='/signup'><button>Create Account</button></Link>
+            </div>
+
+            <div className="home-hero">
+                <h2>Connect <span>with your team.</span></h2>
+                <p>Chatty is a messaging tool that will help your team
+                 connect with everyone in an easy and comfortable way.
+                </p>
+                <img src={chatty} alt='chat' />
             </div>
         </div>
     )
